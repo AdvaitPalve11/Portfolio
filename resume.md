@@ -4,7 +4,7 @@ Systems & Computer Graphics Programmer
 
 Email: advaitdpalve@gmail.com  
 GitHub: github.com/AdvaitPalve11  
-LinkedIn: linkedin.com/in/advaitpalve  
+LinkedIn: linkedin.com/in/advait-palve-93a70b364/
 Portfolio: advaitpalve.com
 
 ## Summary
