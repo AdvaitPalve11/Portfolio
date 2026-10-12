@@ -12,6 +12,39 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://advaitpalve.com');
+const socialImageURL = new URL('/assets/pfp.jpg', Astro.site || 'https://advaitpalve.com');
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Advait Palve',
+  url: 'https://advaitpalve.com/',
+  image: socialImageURL.href,
+  jobTitle: 'Systems & Computer Graphics Programmer',
+  description,
+  email: 'mailto:palveadvait@gmail.com',
+  sameAs: [
+    'https://github.com/AdvaitPalve11',
+    'https://www.linkedin.com/in/advaitpalve',
+  ],
+  knowsAbout: [
+    'Systems programming',
+    'Operating system kernels',
+    'Computer graphics',
+    'C++',
+    'x86_64 architecture',
+    'Ray tracing',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Advait Palve Portfolio',
+  url: 'https://advaitpalve.com/',
+  description,
+  publisher: { '@type': 'Person', name: 'Advait Palve' },
+};
 ---
 
 <!doctype html>
@@ -19,7 +52,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://advaitpa
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2202 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+    <link rel="icon" type="image/jpeg" href="/assets/pfp.jpg" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
@@ -27,22 +60,32 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://advaitpa
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content="Advait Palve" />
-    <meta name="keywords" content="Advait Palve, Systems Programmer, Computer Graphics, C++, x86_64, Kernel, SyndromeOS, Ray Tracer, BVH, RBU Nagpur" />
+    <meta name="keywords" content="Advait Palve, Advait Palve portfolio, Advait Palve programmer, Systems Programmer, Computer Graphics, C++, x86_64, Kernel, SyndromeOS, Ray Tracer, BVH, RBU Nagpur" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="en" href={canonicalURL} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Advait Palve Portfolio" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/assets/BootImage.png" />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:alt" content="Advait Palve" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content="/assets/BootImage.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content="Advait Palve" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 
     <!-- Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
