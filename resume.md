@@ -20,7 +20,7 @@ Ongoing
 ## Core Skills
 
 - Systems Programming: x86_64 architecture, kernel design, paging, interrupt dispatch, memory management
-- Programming Languages: C++, C,Java 
+- Programming Languages: C++, C, Java
 - Graphics & Math: Ray tracing, BVH, PBR shading, linear algebra, performance optimization
 - Tools & Platforms: CMake, QEMU, GDB, Git, Linux, Dear ImGui
 
