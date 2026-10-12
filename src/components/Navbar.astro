@@ -37,16 +37,14 @@ import { Github, FileText, ArrowUpRight } from 'lucide-astro';
         <span class="hidden sm:inline">GitHub</span>
         <ArrowUpRight class="h-3 w-3 text-neutral-500" />
       </a>
-      <a
-        href="/assets/resume.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-1 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1.5 font-mono text-xs sm:text-sm font-medium text-emerald-400 transition-all hover:border-emerald-500/60 hover:bg-emerald-500/20 hover:text-emerald-300"
+      <span
+        aria-disabled="true"
+        title="Resume coming soon"
+        class="inline-flex cursor-not-allowed items-center gap-1 rounded-md border border-neutral-800 bg-neutral-900/50 px-2.5 py-1.5 font-mono text-xs sm:text-sm font-medium text-neutral-500"
       >
         <FileText class="h-3.5 w-3.5" />
-        <span>Resume</span>
-        <ArrowUpRight class="h-3 w-3 text-emerald-400/80" />
-      </a>
+        <span>Resume soon</span>
+      </span>
     </nav>
   </div>
 </header>
