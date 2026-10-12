@@ -1,0 +1,116 @@
+---
+import { Boxes, Code2, Cpu, Github, Linkedin, Mail } from 'lucide-astro';
+import Hero from '../components/Hero.astro';
+import Navbar from '../components/Navbar.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: 'SyndromeOS',
+    category: 'Kernel Architecture · Bare Metal',
+    summary: 'A 64-bit x86_64 operating system kernel written from scratch.',
+    highlights: ['Long mode boot path', '4-level paging and interrupt dispatch'],
+    gifSrc: '/assets/syndromeos-demo.gif',
+    gifAlt: 'SyndromeOS boot sequence and kernel shell demo',
+    terminalTitle: 'syndromeos / qemu',
+    statusText: 'boot sequence stable',
+    techBadges: ['C++', 'x86_64 Assembly', '4-Level Paging', 'IDT / GDT', 'QEMU', 'CMake'],
+    githubUrl: 'https://github.com/AdvaitPalve11/SyndromeOS',
+  },
+  {
+    title: 'Simple-RayTracer',
+    category: 'Computer Graphics · Parallel Computing',
+    summary: 'A multithreaded CPU ray tracing engine accelerated with BVH spatial indexing, physically-based optics, and an interactive Dear ImGui scene editor.',
+    highlights: ['Runtime scene tuning', 'Lambertian, dielectric, and specular materials'],
+    gifSrc: '/assets/raytracer-demo.gif',
+    gifAlt: 'Simple-RayTracer scene editor and high-resolution render demo',
+    terminalTitle: 'raytracer / imgui',
+    statusText: 'render pipeline active',
+    techBadges: ['Modern C++', 'BVH Tree', 'Multithreading', 'Dear ImGui', 'PBR Math'],
+    githubUrl: 'https://github.com/AdvaitPalve11/Simple-RayTracer',
+    reversed: true,
+  },
+];
+
+const skillGroups = [
+  {
+    title: 'Systems & Low-Level',
+    icon: Cpu,
+    skills: ['x86_64 Long Mode', 'Virtual Memory & Paging', 'IDT / GDT', 'Interrupt Dispatching', 'Linux Internals'],
+  },
+  {
+    title: 'Graphics & Math',
+    icon: Boxes,
+    skills: ['Ray Tracing', 'BVH Spatial Partitioning', 'PBR Shading', 'Linear Algebra'],
+  },
+  {
+    title: 'Languages & Tools',
+    icon: Code2,
+    skills: ['C++', 'C', 'x86_64 Assembly', 'CMake', 'GDB', 'QEMU', 'Git'],
+  },
+];
+---
+
+<Layout>
+  <Navbar />
+  <main>
+    <Hero />
+
+    <section id="projects" class="border-t border-neutral-900/80 py-20 sm:py-28">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10 flex items-end justify-between gap-6 sm:mb-12">
+          <div>
+            <p class="mb-3 font-mono text-xs uppercase tracking-[0.22em] text-emerald-400/80">01 / selected work</p>
+            <h2 class="font-mono text-2xl font-bold tracking-tight text-white sm:text-3xl">Built close to the metal.</h2>
+          </div>
+          <span class="hidden font-mono text-xs text-neutral-600 sm:block">// two active systems</span>
+        </div>
+
+        <div class="space-y-6">
+          {projects.map((project) => <ProjectCard {...project} />)}
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="border-t border-neutral-900/80 py-20 sm:py-28">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10">
+          <p class="mb-3 font-mono text-xs uppercase tracking-[0.22em] text-sky-400/80">02 / technical core</p>
+          <h2 class="font-mono text-2xl font-bold tracking-tight text-white sm:text-3xl">A practical toolkit.</h2>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3">
+          {skillGroups.map(({ title, icon: Icon, skills }) => (
+            <article class="rounded-xl border border-neutral-800 bg-neutral-900/50 p-5">
+              <div class="mb-5 flex items-center gap-2 font-mono text-sm font-semibold text-neutral-200">
+                <Icon class="h-4 w-4 text-emerald-400" />
+                <h3>{title}</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                {skills.map((skill) => <span class="rounded border border-neutral-800 bg-neutral-950/70 px-2.5 py-1.5 font-mono text-[11px] text-neutral-400">{skill}</span>)}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-neutral-900/80 py-10">
+    <div class="mx-auto flex max-w-5xl flex-col gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <div>
+        <p class="font-mono text-sm text-neutral-300">Have a systems problem worth solving?</p>
+        <a href="mailto:palveadvait@gmail.com" class="mt-1 inline-flex items-center gap-2 font-mono text-xs text-emerald-400 transition-colors hover:text-emerald-300">
+          <Mail class="h-3.5 w-3.5" /> palveadvait@gmail.com
+        </a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/AdvaitPalve11" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-neutral-500 transition-colors hover:text-white"><Github class="h-4 w-4" /></a>
+        <a href="https://www.linkedin.com/in/advaitpalve" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-neutral-500 transition-colors hover:text-white"><Linkedin class="h-4 w-4" /></a>
+        <a href="mailto:palveadvait@gmail.com" aria-label="Email" class="text-neutral-500 transition-colors hover:text-white"><Mail class="h-4 w-4" /></a>
+      </div>
+      <p class="font-mono text-[11px] text-neutral-600 lg:text-right">advaitpalve.com · Built with Astro &amp; Tailwind · 0 runtime bloat</p>
+    </div>
+  </footer>
+</Layout>

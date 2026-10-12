@@ -1,0 +1,111 @@
+---
+import { Github, Copy, Check, Terminal, Cpu } from 'lucide-astro';
+---
+
+<section class="relative pt-12 pb-16 sm:pt-20 sm:pb-24">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <!-- Status Badge -->
+    <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/80 px-3.5 py-1 text-xs font-mono text-neutral-300 backdrop-blur-sm shadow-sm">
+      <span class="relative flex h-2 w-2">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+      </span>
+      <span>2nd-Year B.Tech CSE @ RBU Nagpur · Low-Level Systems</span>
+    </div>
+
+    <!-- Headline & Subhead -->
+    <div class="space-y-3">
+      <h1 class="font-mono text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+        Advait Palve
+      </h1>
+      <p class="font-mono text-base sm:text-xl font-medium text-emerald-400">
+        Systems Software & Graphics Programmer
+      </p>
+    </div>
+
+    <!-- Brief Bio (2 sentences) -->
+    <p class="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-neutral-400">
+      Building software close to the hardware in modern C++. Currently engineering an x86_64 operating system kernel and graphics engine.
+    </p>
+
+    <!-- Quick Specifications / Architecture Pill Tags -->
+    <div class="mt-6 flex flex-wrap items-center gap-2 text-xs font-mono text-neutral-400">
+      <span class="inline-flex items-center gap-1.5 rounded border border-neutral-800 bg-neutral-900/50 px-2.5 py-1">
+        <Cpu class="h-3.5 w-3.5 text-sky-400" />
+        Arch: x86_64 Long Mode
+      </span>
+      <span class="inline-flex items-center gap-1.5 rounded border border-neutral-800 bg-neutral-900/50 px-2.5 py-1">
+        <Terminal class="h-3.5 w-3.5 text-emerald-400" />
+        Primary: Modern C++
+      </span>
+      <span class="inline-flex items-center gap-1.5 rounded border border-neutral-800 bg-neutral-900/50 px-2.5 py-1">
+        <span class="text-amber-400">●</span>
+        Bare Metal & Ray Tracing
+      </span>
+    </div>
+
+    <!-- Quick Action Buttons -->
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <!-- GitHub Button -->
+      <a
+        href="https://github.com/AdvaitPalve11"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-md border border-neutral-700 bg-neutral-100 px-4 py-2 font-mono text-xs sm:text-sm font-semibold text-neutral-950 transition-all hover:bg-white hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+      >
+        <Github class="h-4 w-4" />
+        <span>View GitHub</span>
+      </a>
+
+      <!-- Copy Email Button -->
+      <button
+        id="copy-email-btn"
+        type="button"
+        data-email="palveadvait@gmail.com"
+        class="group inline-flex items-center gap-2 rounded-md border border-neutral-800 bg-neutral-900/90 px-4 py-2 font-mono text-xs sm:text-sm font-medium text-neutral-300 transition-all hover:border-neutral-700 hover:bg-neutral-800 hover:text-white"
+        aria-label="Copy email address to clipboard"
+      >
+        <Copy id="copy-icon" class="h-4 w-4 text-neutral-400 transition-colors group-hover:text-emerald-400" />
+        <Check id="check-icon" class="hidden h-4 w-4 text-emerald-400" />
+        <span id="copy-text">Copy Email</span>
+      </button>
+
+      <!-- Email direct link -->
+      <a
+        href="mailto:palveadvait@gmail.com"
+        class="inline-flex items-center gap-1.5 rounded-md px-3 py-2 font-mono text-xs text-neutral-400 hover:text-neutral-200 transition-colors"
+      >
+        <span>palveadvait@gmail.com</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const copyBtn = document.getElementById('copy-email-btn');
+  const copyIcon = document.getElementById('copy-icon');
+  const checkIcon = document.getElementById('check-icon');
+  const copyText = document.getElementById('copy-text');
+
+  if (copyBtn && copyIcon && checkIcon && copyText) {
+    copyBtn.addEventListener('click', async () => {
+      const email = copyBtn.getAttribute('data-email') || 'palveadvait@gmail.com';
+      try {
+        await navigator.clipboard.writeText(email);
+        copyIcon.classList.add('hidden');
+        checkIcon.classList.remove('hidden');
+        copyText.textContent = 'Copied!';
+        copyText.classList.add('text-emerald-400');
+
+        setTimeout(() => {
+          copyIcon.classList.remove('hidden');
+          checkIcon.classList.add('hidden');
+          copyText.textContent = 'Copy Email';
+          copyText.classList.remove('text-emerald-400');
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy email:', err);
+      }
+    });
+  }
+</script>
