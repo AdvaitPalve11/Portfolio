@@ -72,6 +72,6 @@ npm run preview -- --host 0.0.0.0
 
 ## Contact
 
-- Email: palveadvait@gmail.com
+- Email: advaitdpalve@gmail.com
 - GitHub: https://github.com/AdvaitPalve11
 - LinkedIn: https://www.linkedin.com/in/advaitpalve
